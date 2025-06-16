@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function TokenomicsPage() {
   return (
-    <div className="flex flex-col items-center min-h-screen">
+    <div className="flex flex-col items-center min-h-screen  mt-8">
       <NavbarDemo />      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-24">
         {/* Header Section */}
         <div className="text-center mb-12 sm:mb-16">
@@ -170,8 +170,8 @@ export default function TokenomicsPage() {
                     <th className="text-left p-3 sm:p-4 font-semibold text-sm sm:text-base">% of Supply</th>
                     <th className="text-left p-3 sm:p-4 font-semibold text-sm sm:text-base">Description</th>
                   </tr>
-                </thead>
-                <tbody>                  <tr className="border-b hover:bg-muted/20">
+                </thead>                <tbody>
+                  <tr className="border-b hover:bg-muted/20">
                     <td className="p-3 sm:p-4">
                       <div className="flex items-center gap-2">
                         <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">

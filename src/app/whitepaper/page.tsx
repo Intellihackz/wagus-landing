@@ -1,6 +1,25 @@
 import type { Metadata } from "next";
 import { NavbarDemo } from "@/components/navbar";
 import { StackedCircularFooterDemo } from "@/components/Footer";
+import { 
+  Target, 
+  Rocket, 
+  Smartphone, 
+  Wrench, 
+  DollarSign, 
+  Settings, 
+  CheckCircle, 
+  Lock, 
+  Ban, 
+  ExternalLink,
+  Gamepad2,
+  Gift,
+  Bot,
+  Vote,
+  Zap,
+  Database,
+  Shield
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "WAGUS Whitepaper - We're All Gonna Use Solana",
@@ -15,7 +34,7 @@ export const metadata: Metadata = {
 
 export default function WhitepaperPage() {
   return (
-    <div className="flex flex-col items-center min-h-screen">
+    <div className="flex flex-col items-center min-h-screen mt-8">
       <NavbarDemo />      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
         {/* Header Section */}
         <div className="text-center mb-12 sm:mb-16">
@@ -28,22 +47,21 @@ export default function WhitepaperPage() {
           <div className="inline-flex items-center gap-2 border rounded-full px-3 sm:px-4 py-2">
             <span className="text-xs sm:text-sm font-medium">Token Symbol:</span>
             <span className="text-xs sm:text-sm font-bold">$WAGUS</span>
-          </div>        </div>
-
-        {/* Vision Section */}
+          </div>        </div>        {/* Vision Section */}
         <section className="mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">🎯 Core Identity & Vision</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex items-center justify-center gap-2 sm:gap-3">
+            <Target className="w-6 h-6 sm:w-8 sm:h-8" />
+            <span>Core Identity & Vision</span>
+          </h2>
           <div className="border rounded-lg p-4 sm:p-6 lg:p-8">
             <blockquote className="text-base sm:text-lg md:text-xl text-center italic font-medium leading-relaxed">
               &quot;To become the trusted mobile utility suite for Solana: One app. Real tools. Real community. Real projects.&quot;
             </blockquote>
           </div>
-        </section>
-
-        {/* Mission Section */}
+        </section>        {/* Mission Section */}
         <section className="mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3">
-            <span className="text-3xl sm:text-4xl">🚀</span>
+            <Rocket className="w-6 h-6 sm:w-8 sm:h-8" />
             <span>Mission</span>
           </h2>
           <div className="prose prose-sm sm:prose-lg max-w-none dark:prose-invert">
@@ -71,15 +89,14 @@ export default function WhitepaperPage() {
         </section>        {/* App Overview Section */}
         <section className="mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3">
-            <span className="text-3xl sm:text-4xl">📱</span>
+            <Smartphone className="w-6 h-6 sm:w-8 sm:h-8" />
             <span>App Overview</span>
           </h2>
           <p className="text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
             WAGUS is a mobile-first app for discovering and supporting Solana projects, built around a set of integrated tools:
           </p>
-          
-          <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3">
-            <span className="text-2xl sm:text-3xl">🧰</span>
+            <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3">
+            <Wrench className="w-6 h-6 sm:w-8 sm:h-8" />
             <span>Core Features</span>
           </h3>
           
@@ -117,34 +134,43 @@ export default function WhitepaperPage() {
         </section>        {/* Token Utility Section */}
         <section className="mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3">
-            <span className="text-3xl sm:text-4xl">💸</span>
+            <DollarSign className="w-6 h-6 sm:w-8 sm:h-8" />
             <span>Utility of $WAGUS</span>
           </h2>
-          <p className="text-base sm:text-lg mb-4 sm:mb-6">Holders of the token can:</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          <p className="text-base sm:text-lg mb-4 sm:mb-6">Holders of the token can:</p>          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <div className="border rounded-lg p-4 sm:p-6">
-              <h4 className="text-base sm:text-lg font-semibold mb-2">🎰 Join daily lotteries</h4>
+              <h4 className="text-base sm:text-lg font-semibold mb-2 flex items-center gap-2">
+                <Gamepad2 className="w-5 h-5" />
+                Join daily lotteries
+              </h4>
               <p className="text-sm sm:text-base text-muted-foreground">Participate in transparent on-chain prize pools</p>
             </div>
             <div className="border rounded-lg p-4 sm:p-6">
-              <h4 className="text-base sm:text-lg font-semibold mb-2">💝 Tip creators and support projects</h4>
+              <h4 className="text-base sm:text-lg font-semibold mb-2 flex items-center gap-2">
+                <Gift className="w-5 h-5" />
+                Tip creators and support projects
+              </h4>
               <p className="text-sm sm:text-base text-muted-foreground">Support early-stage incubator projects</p>
             </div>
             <div className="border rounded-lg p-4 sm:p-6">
-              <h4 className="text-base sm:text-lg font-semibold mb-2">🤖 Unlock premium AI tools</h4>
+              <h4 className="text-base sm:text-lg font-semibold mb-2 flex items-center gap-2">
+                <Bot className="w-5 h-5" />
+                Unlock premium AI tools
+              </h4>
               <p className="text-sm sm:text-base text-muted-foreground">Access advanced AI features and capabilities</p>
             </div>
             <div className="border rounded-lg p-4 sm:p-6">
-              <h4 className="text-base sm:text-lg font-semibold mb-2">🗳️ Participate in DAO governance</h4>
+              <h4 className="text-base sm:text-lg font-semibold mb-2 flex items-center gap-2">
+                <Vote className="w-5 h-5" />
+                Participate in DAO governance
+              </h4>
               <p className="text-sm sm:text-base text-muted-foreground">Vote on key decisions and project direction</p>
             </div>
           </div>
-        </section>
-
-        {/* Tech Stack Section */}
+        </section>        {/* Tech Stack Section */}
         <section className="mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3">
-            <span className="text-3xl sm:text-4xl">🛠️</span>
+            <Settings className="w-6 h-6 sm:w-8 sm:h-8" />
             <span>Tech Stack</span>
           </h2>
           <p className="text-base sm:text-lg mb-4 sm:mb-6">Built with modern, Web3-ready technologies:</p>
@@ -170,42 +196,41 @@ export default function WhitepaperPage() {
               <p className="text-xs sm:text-sm text-muted-foreground">Enhanced tooling and insights</p>
             </div>
           </div>
-        </section>
-
-        {/* Trust & Compliance Section */}
+        </section>        {/* Trust & Compliance Section */}
         <section className="mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3">
-            <span className="text-3xl sm:text-4xl">✅</span>
+            <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8" />
             <span>Trust & Compliance</span>
           </h2>
-          <div className="border rounded-lg p-4 sm:p-6 lg:p-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          <div className="border rounded-lg p-4 sm:p-6 lg:p-8">            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
               <div className="text-center">
-                <div className="text-xl sm:text-2xl mb-2">🔐</div>
+                <div className="flex justify-center mb-2">
+                  <Lock className="w-6 h-6 sm:w-8 sm:h-8" />
+                </div>
                 <h4 className="text-sm sm:text-base font-semibold mb-2">Fully Non-Custodial</h4>
                 <p className="text-xs sm:text-sm text-muted-foreground">Users own their keys</p>
               </div>
               <div className="text-center">
-                <div className="text-xl sm:text-2xl mb-2">🚫</div>
+                <div className="flex justify-center mb-2">
+                  <Ban className="w-6 h-6 sm:w-8 sm:h-8" />
+                </div>
                 <h4 className="text-sm sm:text-base font-semibold mb-2">No Speculation</h4>
                 <p className="text-xs sm:text-sm text-muted-foreground">No fake promises or hype</p>
               </div>
               <div className="text-center">
-                <div className="text-xl sm:text-2xl mb-2">📱</div>
+                <div className="flex justify-center mb-2">
+                  <Shield className="w-6 h-6 sm:w-8 sm:h-8" />
+                </div>
                 <h4 className="text-sm sm:text-base font-semibold mb-2">App Store Compliant</h4>
                 <p className="text-xs sm:text-sm text-muted-foreground">Data & encryption standards</p>
               </div>
             </div>
-          </div>        </section>
-
-        {/* Token Trading Section */}
+          </div>        </section>        {/* Token Trading Section */}
         <section className="mb-16">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
-            <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.102m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-            </svg>
+            <ExternalLink className="w-6 h-6 sm:w-8 sm:h-8" />
             Token Trading
-          </h2>          <div className="border rounded-lg p-4 sm:p-6 lg:p-8 text-center">
+          </h2><div className="border rounded-lg p-4 sm:p-6 lg:p-8 text-center">
             <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Trade $WAGUS Now</h3>
             <p className="text-base sm:text-lg mb-4 sm:mb-6 text-muted-foreground">
               You can view and trade $WAGUS on Pump.fun

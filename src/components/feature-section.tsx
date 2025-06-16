@@ -17,7 +17,6 @@ interface FeatureStepsProps {
   className?: string
   title?: string
   autoPlayInterval?: number
-  imageHeight?: string
 }
 
 export function FeatureSteps({
@@ -88,7 +87,7 @@ export function FeatureSteps({
 
           <div
             className={cn(
-              "order-1 md:order-2 relative h-[250px] md:h-[400px] lg:h-[500px] overflow-hidden rounded-lg"
+              "order-1 md:order-2 relative h-[250px] md:h-[400px] lg:h-[500px] overflow-hidden rounded-lg bg-muted/20"
             )}
           >
             <AnimatePresence mode="wait">
@@ -97,7 +96,7 @@ export function FeatureSteps({
                   index === currentFeature && (
                     <motion.div
                       key={index}
-                      className="absolute inset-0 rounded-lg overflow-hidden"
+                      className="absolute inset-0 rounded-lg overflow-hidden flex items-center justify-center"
                       initial={{ y: 100, opacity: 0, rotateX: -20 }}
                       animate={{ y: 0, opacity: 1, rotateX: 0 }}
                       exit={{ y: -100, opacity: 0, rotateX: 20 }}
@@ -106,11 +105,11 @@ export function FeatureSteps({
                       <Image
                         src={feature.image}
                         alt={feature.step}
-                        className="w-full h-full object-cover transition-transform transform"
+                        className="w-full h-full object-contain transition-transform transform"
                         width={1000}
                         height={500}
                       />
-                      <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-background via-background/50 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-background/20 via-background/10 to-transparent pointer-events-none" />
                     </motion.div>
                   ),
               )}

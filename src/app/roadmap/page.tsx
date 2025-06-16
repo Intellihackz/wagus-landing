@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RoadmapPage() {
   return (
-    <div className="flex flex-col items-center min-h-screen">
+    <div className="flex flex-col items-center min-h-screen  mt-8">
       <NavbarDemo />      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-24">
         {/* Header Section */}
         <div className="text-center mb-12 sm:mb-16">

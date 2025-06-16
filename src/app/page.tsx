@@ -13,7 +13,7 @@ export default function Home() {
           subtitle="Empowering the Solana Ecosystem with Innovative tools and community-driven development."
           actions={[
             {
-              label: "Try Wagus App",
+              label: "Get Wagus App",
               href: "https://apps.apple.com/us/app/wagus/id6742799148",
               variant: "outline",
             },
