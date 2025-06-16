@@ -23,7 +23,7 @@ export default function WhitepaperPage() {
             WAGUS Whitepaper
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground mb-6 sm:mb-8">
-            We're All Gonna Use Solana
+            We&apos;re All Gonna Use Solana
           </p>
           <div className="inline-flex items-center gap-2 border rounded-full px-3 sm:px-4 py-2">
             <span className="text-xs sm:text-sm font-medium">Token Symbol:</span>
@@ -35,7 +35,7 @@ export default function WhitepaperPage() {
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">🎯 Core Identity & Vision</h2>
           <div className="border rounded-lg p-4 sm:p-6 lg:p-8">
             <blockquote className="text-base sm:text-lg md:text-xl text-center italic font-medium leading-relaxed">
-              "To become the trusted mobile utility suite for Solana: One app. Real tools. Real community. Real projects."
+              &quot;To become the trusted mobile utility suite for Solana: One app. Real tools. Real community. Real projects.&quot;
             </blockquote>
           </div>
         </section>

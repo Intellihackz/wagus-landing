@@ -2,7 +2,6 @@ import { StackedCircularFooterDemo } from "@/components/Footer";
 import { Hero } from "@/components/hero";
 import { NavbarDemo } from "@/components/navbar";
 import { FeatureStepsDemo } from "@/components/ui/Featured";
-import Image from "next/image";
 
 export default function Home() {
   return (
