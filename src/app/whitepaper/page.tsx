@@ -16,8 +16,6 @@ import {
   Gift,
   Bot,
   Vote,
-  Zap,
-  Database,
   Shield
 } from "lucide-react";
 
