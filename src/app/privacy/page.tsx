@@ -76,7 +76,7 @@ export default function PrivacyPage() {
             <ul className="space-y-2 text-muted-foreground mb-4">
               <li>Enable core features such as wallet access, chat, and AI tools</li>
               <li>Deliver personalized and functional user experiences</li>
-              <li>Maintain the integrity of the lottery and incubator system</li>
+              <li>Maintain the integrity of the incubator system</li>
               <li>Improve performance and optimize feature relevance</li>
             </ul>
             <p className="text-muted-foreground font-medium">
