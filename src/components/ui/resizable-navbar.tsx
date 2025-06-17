@@ -184,7 +184,7 @@ export const MobileNavHeader = ({
   return (
     <div
       className={cn(
-        "flex w-full flex-row items-center justify-between",
+        "flex w-full flex-row items-center justify-between ",
         className,
       )}
     >
@@ -242,8 +242,9 @@ export const NavbarLogo = () => {
         alt="logo"
         width={50}
         height={50}
+        className="rounded"
       />
-      <span className="font-medium text-black dark:text-white">WAGUS</span>
+      <span className="font-medium text-black dark:text-white">WAGUS</span>   
     </Link>
   );
 };
