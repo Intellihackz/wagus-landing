@@ -1,89 +1,77 @@
-"use client"
+"use client";
 
-import React from "react"
-import { motion } from "framer-motion"
-import Image from "next/image"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import React from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 interface SuccessStory {
-  id: string
-  title: string
-  summary: string
-  earnings: string
+  id: string;
+  title: string;
+  summary: string;
+  earnings: string;
   user: {
-    name: string
-    avatar: string
-    location: string
-  }
-  coverImage: string
-  tags: string[]
-  timeframe: string
+    name: string;
+    avatar: string;
+    location: string;
+  };
+  coverImage: string;
+  tags: string[];
+  timeframe: string;
 }
 
 interface SuccessStoriesPreviewProps {
-  className?: string
+  className?: string;
 }
 
 // Dummy data for the preview
 const successStories: SuccessStory[] = [
   {
     id: "1",
-    title: "Earned $500 in a Week",
-    summary: "Used WAGUS AI tools to launch my first token project with community support.",
-    earnings: "$500",
+    title: "Built My Whitepaper in 10 Minutes",
+    summary:
+      "Used the AI Whitepaper Generator and exported a clean PDF ready to share.",
+ earnings: "$0",
     user: {
-      name: "Sarah Chen",
-      avatar: "/ai-tools.jpg", // Using existing images as placeholders
-      location: "California, USA"
+      name: "Ava",
+      avatar: "/ai-tools.jpg",
+      location: "New York, USA 🇺🇸",
     },
     coverImage: "/ai-tools.jpg",
-    tags: ["#web3", "#AI", "#launch"],
-    timeframe: "7 days"
-  },
-  {
-    id: "2", 
-    title: "Built Community of 1K+ Members",
-    summary: "WAGUS Global Chat helped me connect with builders and grow my project.",
-    earnings: "$300",
-    user: {
-      name: "Alex Rodriguez",
-      avatar: "/comm.jpg",
-      location: "Miami, FL"
-    },
-    coverImage: "/comm.jpg",
-    tags: ["#community", "#networking", "#growth"],
-    timeframe: "2 weeks"
+    tags: ["#ai", "#nocode", "#founder"],
+    timeframe: "10 minutes",
   },
   {
     id: "3",
-    title: "Incubated My Startup Idea",
-    summary: "Got feedback and funding through WAGUS Incubator Hub.",
-    earnings: "$1,200",
+    title: "Launched Beta in WAGUS Incubator",
+    summary: "Submitted my project idea, got community feedback + UI advice.",
+   earnings: "$0",
     user: {
-      name: "Jamie Park",
+      name: "Lina",
       avatar: "/incubator.jpg",
-      location: "Seoul, Korea"
+      location: "Berlin, Germany 🇩🇪",
     },
-    coverImage: "/incubator.jpg", 
-    tags: ["#incubator", "#funding", "#startup"],
-    timeframe: "1 month"
+    coverImage: "/incubator.jpg",
+    tags: ["#incubator", "#support", "#launch"],
+    timeframe: "1 month",
   },
   {
-    id: "4",
-    title: "Staking Rewards Success",
-    summary: "Consistent returns through WAGUS staking features and community insights.",
-    earnings: "$200",
+    id: "5",
+    title: "AI Helped Me Generate Smart Copy",
+    summary:
+      "Used WAGUS GPT agent to write better headlines and tokenomics explanations.",
+    earnings: "$0",
     user: {
-      name: "Michael Thompson",
-      avatar: "/ai-tools.jpg",
-      location: "London, UK"
+      name: "Ethan",
+      avatar: "/comm.jpg",
+      location: "London, UK 🇬🇧",
     },
-    coverImage: "/ai-tools.jpg",
-    tags: ["#staking", "#earn", "#defi"],
-    timeframe: "2 days"
-  }
-]
+    coverImage: "/comm.jpg",
+    tags: ["#copywriting", "#ai", "#product"],
+    timeframe: "1 week",
+  },
+];
 
 function StoryCard({ story, index }: { story: SuccessStory; index: number }) {
   return (
@@ -110,19 +98,15 @@ function StoryCard({ story, index }: { story: SuccessStory; index: number }) {
         <h3 className="text-lg font-semibold mb-2 text-foreground">
           {story.title}
         </h3>
-         
-        <p className="text-muted-foreground text-sm mb-3">
-          {story.summary}
-        </p>
+
+        <p className="text-muted-foreground text-sm mb-3">{story.summary}</p>
 
         {/* User Info */}
         <div className="mb-3">
           <p className="font-medium text-foreground text-sm">
             {story.user.name}
           </p>
-          <p className="text-xs text-muted-foreground">
-            {story.user.location}
-          </p>
+          <p className="text-xs text-muted-foreground">{story.user.location}</p>
         </div>
 
         {/* Tags */}
@@ -138,10 +122,12 @@ function StoryCard({ story, index }: { story: SuccessStory; index: number }) {
         </div>
       </div>
     </motion.div>
-  )
+  );
 }
 
-export function SuccessStoriesPreview({ className }: SuccessStoriesPreviewProps) {
+export function SuccessStoriesPreview({
+  className,
+}: SuccessStoriesPreviewProps) {
   return (
     <section className={cn("py-16 md:py-24", className)}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -154,7 +140,7 @@ export function SuccessStoriesPreview({ className }: SuccessStoriesPreviewProps)
           viewport={{ once: true }}
         >
           <blockquote className="text-3xl md:text-4xl lg:text-5xl font-serif italic text-foreground mb-6 leading-tight">
-            "WAGUS helped me earn $500 in a week."
+            "Built my whitepaper in 10 minutes with WAGUS AI."
           </blockquote>
           <p className="text-lg text-muted-foreground">
             – Real users, real wins
@@ -178,7 +164,7 @@ export function SuccessStoriesPreview({ className }: SuccessStoriesPreviewProps)
         </motion.div>
 
         {/* Story Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 mb-12">
           {successStories.map((story, index) => (
             <StoryCard key={story.id} story={story} index={index} />
           ))}
@@ -192,17 +178,11 @@ export function SuccessStoriesPreview({ className }: SuccessStoriesPreviewProps)
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <Button
-            size="lg"
-            className="text-lg px-8 py-6 h-auto"
-            asChild
-          >
-            <a href="/success-stories">
-              See All Stories →
-            </a>
+          <Button size="lg" className="text-lg px-8 py-6 h-auto" asChild>
+            <a href="/success-stories">See All Stories →</a>
           </Button>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
