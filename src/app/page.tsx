@@ -2,6 +2,7 @@ import { StackedCircularFooterDemo } from "@/components/Footer";
 import { Hero } from "@/components/hero";
 import { NavbarDemo } from "@/components/navbar";
 import { FeatureStepsDemo } from "@/components/ui/Featured";
+import { SuccessStoriesPreview } from "@/components/success-stories-preview";
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
         />
       </div>
       <FeatureStepsDemo />
+      <SuccessStoriesPreview />
       <StackedCircularFooterDemo />
     </div>
   );
