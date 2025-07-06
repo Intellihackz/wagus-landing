@@ -1,9 +1,6 @@
-"use client";
-
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { NavbarDemo } from "@/components/navbar";
 import { StackedCircularFooterDemo } from "@/components/Footer";
@@ -106,13 +103,10 @@ const allSuccessStories: SuccessStory[] = [
 function StoryCard({
   story,
   index,
-  detailed = false,
 }: {
   story: SuccessStory;
   index: number;
-  detailed?: boolean;
 }) {
-  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <motion.div
@@ -222,7 +216,6 @@ export default function SuccessStoriesPage() {
                     key={story.id}
                     story={story}
                     index={index}
-                    detailed={true}
                   />
                 ))}
             </div>

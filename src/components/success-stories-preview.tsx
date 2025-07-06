@@ -140,7 +140,7 @@ export function SuccessStoriesPreview({
           viewport={{ once: true }}
         >
           <blockquote className="text-3xl md:text-4xl lg:text-5xl font-serif italic text-foreground mb-6 leading-tight">
-            "Built my whitepaper in 10 minutes with WAGUS AI."
+            &ldquo;Built my whitepaper in 10 minutes with WAGUS AI.&rdquo;
           </blockquote>
           <p className="text-lg text-muted-foreground">
             – Real users, real wins
