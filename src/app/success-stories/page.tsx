@@ -1,4 +1,4 @@
-"use client "
+"use client ";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -101,14 +101,7 @@ const allSuccessStories: SuccessStory[] = [
   },
 ];
 
-function StoryCard({
-  story,
-  index,
-}: {
-  story: SuccessStory;
-  index: number;
-}) {
-
+function StoryCard({ story, index }: { story: SuccessStory; index: number }) {
   return (
     <motion.div
       className="group relative bg-card rounded-xl border border-border overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
@@ -213,11 +206,7 @@ export default function SuccessStoriesPage() {
               {allSuccessStories
                 .slice(0, visibleStories)
                 .map((story, index) => (
-                  <StoryCard
-                    key={story.id}
-                    story={story}
-                    index={index}
-                  />
+                  <StoryCard key={story.id} story={story} index={index} />
                 ))}
             </div>
 
