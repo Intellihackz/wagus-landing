@@ -83,6 +83,7 @@ WAGUS is the native utility token with real in-app use:
 
 ## 🧠 Getting Started
 
+### App Usage
 1. **Download the app**  
    - [iOS App Store](https://apps.apple.com/us/app/wagus/id6742799148)  
    - [Android Play Store](https://play.google.com/store/apps/details?id=com.silnt.wagus&pcampaignid=web_share)
@@ -92,6 +93,18 @@ WAGUS is the native utility token with real in-app use:
 4. **Earn tokens** by staying active
 5. **Use AI tools** to build your project
 6. **Back projects** and support builders
+
+### Development Setup
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+4. Set up Firebase backend - see [Firebase Setup Instructions](firebase-setup.md)
 
 ---
 

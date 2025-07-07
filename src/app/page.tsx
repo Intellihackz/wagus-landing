@@ -3,6 +3,7 @@ import { Hero } from "@/components/hero";
 import { NavbarDemo } from "@/components/navbar";
 import { FeatureStepsDemo } from "@/components/ui/Featured";
 import { SuccessStoriesPreview } from "@/components/success-stories-preview";
+import { DevLogPreview } from "@/components/dev-log-preview";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
       </div>
       <FeatureStepsDemo />
       <SuccessStoriesPreview />
+      <DevLogPreview />
       <StackedCircularFooterDemo />
     </div>
   );

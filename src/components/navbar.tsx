@@ -24,7 +24,7 @@ export function NavbarDemo() {  const navItems = [
     {
       name: "Roadmap",
       link: "/roadmap",
-    },
+    }
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
