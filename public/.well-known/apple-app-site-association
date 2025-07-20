@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "287CZZPQAV.com.wagus.app",
+        "paths": ["/*"]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "287CZZPQAV.com.wagus.app"
+    ]
+  }
+}

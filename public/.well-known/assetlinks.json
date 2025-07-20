@@ -1,0 +1,12 @@
+[
+    {
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.wagus.app",
+        "sha256_cert_fingerprints": [
+          "42:64:D6:C1:F0:D4:5C:D7:D4:1B:B3:09:2A:FC:78:F5:EF:DC:80:9B:2A:61:00:D6:88:AE:93:3B:E4:00:4C:13"
+        ]
+      }
+    }
+  ]
