@@ -28,9 +28,15 @@ interface NavItemsProps {
   items: {
     name: string;
     link: string;
+    active?: boolean;
   }[];
   className?: string;
   onItemClick?: () => void;
+  renderItem?: (
+    item: { name: string; link: string; active?: boolean },
+    idx: number,
+    hovered: number | null
+  ) => React.ReactNode;
 }
 
 interface MobileNavProps {
@@ -60,7 +66,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   const [visible, setVisible] = useState<boolean>(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 50) { // Reduced from 100 to 50 for earlier trigger
+    if (latest > 30) { // Even earlier trigger for faster response
       setVisible(true);
     } else {
       setVisible(false);
@@ -70,8 +76,23 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   return (
     <motion.div
       ref={ref}
-      // Changed from sticky to fixed for floating navbar
-      className={cn("fixed inset-x-0 top-0 z-50 w-full", className)}
+      initial={{ y: 0 }}
+      animate={{ 
+        y: 0,
+        boxShadow: visible 
+          ? "0 4px 20px rgba(0, 0, 0, 0.08)" 
+          : "0 0 0 rgba(0, 0, 0, 0)"
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 260,
+        damping: 20
+      }}
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 w-full transition-all duration-300",
+        visible ? "backdrop-blur-md" : "backdrop-blur-sm",
+        className
+      )}
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
@@ -89,24 +110,27 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   return (
     <motion.div
       animate={{
-        backdropFilter: visible ? "blur(10px)" : "blur(5px)",
+        backdropFilter: visible ? "blur(12px)" : "blur(8px)",
         boxShadow: visible
-          ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
+          ? "0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.06)"
           : "0 4px 12px rgba(0, 0, 0, 0.05)",
-        width: visible ? "40%" : "100%",
-        y: visible ? 8 : 0, // Reduced from 20 to 8 for subtler movement
+        width: visible ? "60%" : "94%", // Wider when scrolling, slightly narrower initially
+        y: visible ? 10 : 0,
+        borderRadius: visible ? "16px" : "9999px", // More rectangular when scrolled
       }}
       transition={{
         type: "spring",
-        stiffness: 200,
-        damping: 50,
+        stiffness: 300,
+        damping: 30,
       }}
       style={{
         minWidth: "800px",
       }}
       className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full px-4 py-2 lg:flex",
-        visible ? "bg-white/90 dark:bg-neutral-950/90" : "bg-white/60 dark:bg-neutral-950/60",
+        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start px-6 py-3 lg:flex",
+        visible 
+          ? "bg-white/95 dark:bg-neutral-900/95 border border-neutral-200/50 dark:border-neutral-800/50" 
+          : "bg-white/80 dark:bg-neutral-900/80",
         className,
       )}
     >
@@ -115,7 +139,12 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   );
 };
 
-export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
+export const NavItems = ({ 
+  items, 
+  className, 
+  onItemClick,
+  renderItem 
+}: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
@@ -126,23 +155,33 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
         className,
       )}
     >
-      {items.map((item, idx) => (
-        <a
-          onMouseEnter={() => setHovered(idx)}
-          onClick={onItemClick}
-          className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
-          key={`link-${idx}`}
-          href={item.link}
-        >
-          {hovered === idx && (
-            <motion.div
-              layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
-            />
-          )}
-          <span className="relative z-20">{item.name}</span>
-        </a>
-      ))}
+      {items.map((item, idx) => 
+        renderItem ? (
+          <div 
+            key={`link-${idx}`}
+            onMouseEnter={() => setHovered(idx)}
+            onClick={onItemClick}
+          >
+            {renderItem(item, idx, hovered)}
+          </div>
+        ) : (
+          <a
+            onMouseEnter={() => setHovered(idx)}
+            onClick={onItemClick}
+            className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
+            key={`link-${idx}`}
+            href={item.link}
+          >
+            {hovered === idx && (
+              <motion.div
+                layoutId="hovered"
+                className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+              />
+            )}
+            <span className="relative z-20">{item.name}</span>
+          </a>
+        )
+      )}
     </motion.div>
   );
 };
@@ -151,24 +190,26 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
   return (
     <motion.div
       animate={{
-        backdropFilter: visible ? "blur(10px)" : "blur(5px)",
+        backdropFilter: visible ? "blur(12px)" : "blur(8px)",
         boxShadow: visible
-          ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
+          ? "0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.05)"
           : "0 4px 12px rgba(0, 0, 0, 0.05)",
-        width: visible ? "90%" : "100%",
-        paddingRight: visible ? "12px" : "0px",
-        paddingLeft: visible ? "12px" : "0px",
-        borderRadius: visible ? "4px" : "2rem",
-        y: visible ? 8 : 0, // Reduced from 20 to 8 for subtler movement
+        width: visible ? "92%" : "100%",
+        paddingRight: visible ? "16px" : "16px",
+        paddingLeft: visible ? "16px" : "16px",
+        borderRadius: visible ? "12px" : "24px",
+        y: visible ? 10 : 0,
       }}
       transition={{
         type: "spring",
-        stiffness: 200,
-        damping: 50,
+        stiffness: 300,
+        damping: 30,
       }}
       className={cn(
-        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between px-0 py-2 lg:hidden",
-        visible ? "bg-white/90 dark:bg-neutral-950/90" : "bg-white/60 dark:bg-neutral-950/60",
+        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between py-3 lg:hidden",
+        visible 
+          ? "bg-white/95 dark:bg-neutral-900/95 border border-neutral-200/50 dark:border-neutral-800/50" 
+          : "bg-white/80 dark:bg-neutral-900/80",
         className,
       )}
     >
@@ -202,11 +243,16 @@ export const MobileNavMenu = ({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ 
+            type: "spring",
+            stiffness: 400,
+            damping: 30
+          }}
           className={cn(
-            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white px-4 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] dark:bg-neutral-950",
+            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-5 rounded-xl bg-white/95 dark:bg-neutral-900/95 px-5 py-8 border border-neutral-200/70 dark:border-neutral-800/70 shadow-xl backdrop-blur-md",
             className,
           )}
         >
