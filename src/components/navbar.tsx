@@ -43,9 +43,8 @@ export function NavbarDemo() {
 
   // Function to determine if a nav item is active
   const isActive = (link: string) => {
-    if (link === "/" && pathname === "/") return true;
-    if (link !== "/" && pathname.startsWith(link)) return true;
-    return false;
+    if (link === "/") return pathname === "/";
+    return pathname.startsWith(link);
   };
 
   return (
