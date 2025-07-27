@@ -1,5 +1,5 @@
 import { db, storage } from "./config";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
 
 export interface TokenVerificationData {

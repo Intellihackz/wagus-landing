@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import Image from "next/image";
 import { submitTokenVerification } from "@/lib/firebase/token-verification";
 
 export default function VerifyPage() {
@@ -228,10 +229,12 @@ export default function VerifyPage() {
                   <div className="mt-2">
                     <p className="text-sm text-muted-foreground mb-2">Image Preview:</p>
                     <div className="relative w-24 h-24 overflow-hidden rounded-md border border-input">
-                      <img 
+                      <Image 
                         src={imagePreview} 
                         alt="Token logo preview" 
-                        className="object-contain w-full h-full"
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 768px) 96px, 96px"
                       />
                     </div>
                   </div>
