@@ -10,7 +10,7 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 
 export function NavbarDemo() {
@@ -40,14 +40,6 @@ export function NavbarDemo() {
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
-  
-  // Update active section based on pathname
-  useEffect(() => {
-    // Set the active section based on the current pathname
-    const currentPath = pathname === "/" ? "/" : pathname;
-    setActiveSection(currentPath);
-  }, [pathname]);
 
   // Function to determine if a nav item is active
   const isActive = (link: string) => {
