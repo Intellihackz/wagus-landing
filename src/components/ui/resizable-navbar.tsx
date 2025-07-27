@@ -160,6 +160,7 @@ export const NavItems = ({
           <div 
             key={`link-${idx}`}
             onMouseEnter={() => setHovered(idx)}
+            onMouseLeave={() => setHovered(null)}
             onClick={onItemClick}
           >
             {renderItem(item, idx, hovered)}
