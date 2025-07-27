@@ -235,7 +235,6 @@ export default function VerifyPage() {
                         fill
                         className="object-contain"
                         sizes="(max-width: 768px) 96px, 96px"
-                        priority
                       />
                     </div>
                   </div>
